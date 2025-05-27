@@ -6,68 +6,86 @@ import sas.*;
 
 public class Table extends Card
 {
+    Circle[] k;
     Text b;
     Random dealer;
+    boolean[] picked;
     int[] memory;
+    int count=0,check=0;
     public Table()
     {
-        b = new Text(400,700,"Scramble by pressing Space");
+        b = new Text(400,700,"Discard by pressing Space");
         v.setBackgroundColor(Color.GREEN);
         dealer = new Random();
-        memory = new int [5];
-        for(int i = 0; i<5;i++)
+        picked = new boolean[9];
+        memory = new int [9];
+        k = new Circle[9];
+        for(int i = 0; i<9;i++)
         {
+            k[i] = new Circle(20+i*130,50,50,Color.YELLOW);
+            k[i].setHidden(true);
             memory[i]=52;
+            picked[i]=true;
         }
-        scramble(true,true,true,true,true);
+        scramble(picked);
         while(true){
             if(v.keyPressed(' ')){
-                scramble(true,true,true,true,true);
-                v.wait(1000);
+                scramble(picked);
+                v.wait(200);
             }
-        }
+            if(v.keyPressed('a')&&count>0){
+                count--;
+                v.wait(200);
+            }
+            if(v.keyPressed('d')&&count<9){
+                count++;
+                v.wait(200);
+            }
+            s[memory[count]].moveTo(s[memory[count]].getShapeX(),150);
+            if(count!=check){
+                s[memory[check]].moveTo(s[memory[check]].getShapeX(),200);
+            }
+            check = count;
+            if(v.keyEnterPressed()){
+                if(picked[count]){
+                    picked[count]=false;
+                    k[count].setHidden(true);
+                    v.wait(200);
+                }
+                else{
+                    picked[count]=true;
+                    k[count].setHidden(false);
+                    v.wait(200);
+                }
+            }
+        } 
     }
 
-    public void scramble(boolean a,boolean b,boolean c,boolean d,boolean e)
+    public void scramble(boolean a[])
     {
-        while((memory[0]==52||memory[0]==memory[1]||memory[0]==memory[2]||memory[0]==memory[3]||memory[0]==memory[4])||a)
+        for(int i = 0; i<9;i++)
         {
-            memory[0]=dealer.nextInt(0,51);
-            a = false;
-        }
-        while((memory[1]==52||memory[1]==memory[0]||memory[1]==memory[2]||memory[1]==memory[3]||memory[1]==memory[4])||b)
-        {
-            memory[1]=dealer.nextInt(0,51);
-            b = false;
-        }
-        while((memory[2]==52||memory[2]==memory[1]||memory[2]==memory[0]||memory[2]==memory[3]||memory[2]==memory[4])||c)
-        {
-            memory[2]=dealer.nextInt(0,51);
-            c = false;
-        }
-        while((memory[3]==52||memory[3]==memory[1]||memory[3]==memory[2]||memory[3]==memory[0]||memory[3]==memory[4])||d)
-        {
-            memory[3]=dealer.nextInt(0,51);
-            d = false;
-        }
-        while((memory[4]==52||memory[4]==memory[1]||memory[4]==memory[2]||memory[4]==memory[3]||memory[4]==memory[0])||e)
-        {
-            memory[4]=dealer.nextInt(0,51);
-            e = false;
+            while(a[i])
+            {
+                int temp =dealer.nextInt(0,51);
+                if(temp==memory[0]||temp==memory[1]||temp==memory[2]||temp==memory[3]||temp==memory[4]||temp==memory[5]||temp==memory[6]||temp==memory[7]||temp==memory[8]){
+                    a[i] = true;
+                }
+                else{
+                    a[i] = false;
+                    memory[i]=temp;
+                }
+            }
         }
         for(int i = 0; i<52;i++)
         {
-            s[i].setHidden(true);
+           s[i].setHidden(true);
         }
-        s[memory[0]].moveTo(60,200);
-        s[memory[0]].setHidden(false);
-        s[memory[1]].moveTo(240,200);
-        s[memory[1]].setHidden(false);
-        s[memory[2]].moveTo(420,200);
-        s[memory[2]].setHidden(false);
-        s[memory[3]].moveTo(600,200);
-        s[memory[3]].setHidden(false);
-        s[memory[4]].moveTo(780,200);
-        s[memory[4]].setHidden(false);
+        for(int i = 0; i<9;i++)
+        {
+            s[memory[i]].moveTo(20+i*130,200);
+            s[memory[i]].setHidden(false);
+            k[i].setHidden(true);
+        }
     }
 }

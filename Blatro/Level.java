@@ -12,7 +12,7 @@ public class Level extends Main
         random = new Random();
         v.setBackgroundColor(Color.BLUE);
         for( int i = 0; i<100;i++){
-            tree(random.nextInt(50,950),random.nextInt(50,950),random.nextDouble(0.8,1.2));
+            tree(random.nextInt(50,1150),random.nextInt(50,850),random.nextDouble(0.8,1.2));
         }
     }
 

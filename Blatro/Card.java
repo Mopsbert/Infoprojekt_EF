@@ -10,7 +10,7 @@ public class Card extends Main
         s = new Sprite[52];
         for(int i = 0; i<52;i++){
             s[i]= new Sprite();
-            cardConstruct(i,0.7);
+            cardConstruct(i,0.5);
             s[i].setHidden(true);
         }
     }
