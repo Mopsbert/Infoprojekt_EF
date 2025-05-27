@@ -1,3 +1,5 @@
+package Blatro;
+
 
 /**
  * Beschreiben Sie hier die Klasse Player.
