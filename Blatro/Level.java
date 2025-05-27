@@ -1,35 +1,26 @@
 package Blatro;
 
+import sas.*;
+import java.awt.Color;
+import java.util.Random;
 
-/**
- * Beschreiben Sie hier die Klasse Level.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
-public class Level
+public class Level extends Main
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
-    /**
-     * Konstruktor für Objekte der Klasse Level
-     */
+    Random random;
     public Level()
     {
-        // Instanzvariable initialisieren
-        x = 0;
+        random = new Random();
+        v.setBackgroundColor(Color.BLUE);
+        for( int i = 0; i<100;i++){
+            tree(random.nextInt(50,950),random.nextInt(50,950),random.nextDouble(0.8,1.2));
+        }
     }
 
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public int beispielMethode(int y)
+    public void tree(int x, int y, double multiplier)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        Circle c;
+        Rectangle r;
+        c = new Circle(x,y,10*multiplier,Color.GREEN);
+        r = new Rectangle(x+8*multiplier,y+20*multiplier,4*multiplier,12*multiplier);
     }
 }
