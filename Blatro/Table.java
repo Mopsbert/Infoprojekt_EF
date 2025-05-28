@@ -7,14 +7,15 @@ import sas.*;
 public class Table extends Card
 {
     Circle[] k;
-    Text b;
+    Text b,c;
     Random dealer;
     boolean[] picked;
     int[] memory;
-    int count=0,check=0;
+    int count=0,check=0,select=0;
     public Table()
     {
-        b = new Text(400,700,"Discard by pressing Space");
+        b = new Text(400,700,"Discard by pressing Backspace");
+        c = new Text(400,600,select+"/5");
         v.setBackgroundColor(Color.GREEN);
         dealer = new Random();
         picked = new boolean[9];
@@ -29,7 +30,7 @@ public class Table extends Card
         }
         scramble(picked);
         while(true){
-            if(v.keyPressed(' ')){
+            if(v.keyBackspacePressed()){
                 scramble(picked);
                 v.wait(200);
             }
@@ -46,18 +47,21 @@ public class Table extends Card
                 s[memory[check]].moveTo(s[memory[check]].getShapeX(),200);
             }
             check = count;
-            if(v.keyEnterPressed()){
+            if(v.keyPressed(' ')){
                 if(picked[count]){
                     picked[count]=false;
                     k[count].setHidden(true);
+                    select--;
                     v.wait(200);
                 }
-                else{
+                else if(select<5){
                     picked[count]=true;
                     k[count].setHidden(false);
+                    select++;
                     v.wait(200);
                 }
             }
+            c.setText(select+"/5");
         } 
     }
 
