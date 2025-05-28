@@ -33,6 +33,7 @@ public class Table extends Card
             if(v.keyBackspacePressed()){
                 scramble(picked);
                 v.wait(200);
+                select=0;
             }
             if(v.keyPressed('a')&&count>0){
                 count--;
