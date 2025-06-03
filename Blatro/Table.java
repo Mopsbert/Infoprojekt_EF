@@ -20,11 +20,8 @@ public class Table extends Card
         dealer = new Random();
         picked = new boolean[9];
         memory = new int [9];
-        k = new Circle[9];
         for(int i = 0; i<9;i++)
         {
-            k[i] = new Circle(20+i*130,50,50,Color.YELLOW);
-            k[i].setHidden(true);
             memory[i]=52;
             picked[i]=true;
         }
@@ -39,25 +36,25 @@ public class Table extends Card
                 count--;
                 v.wait(200);
             }
-            if(v.keyPressed('d')&&count<9){
+            if(v.keyPressed('d')&&count<8){
                 count++;
                 v.wait(200);
             }
-            s[memory[count]].moveTo(s[memory[count]].getShapeX(),150);
+            s[memory[count]].scaleTo(130,260);
             if(count!=check){
-                s[memory[check]].moveTo(s[memory[check]].getShapeX(),200);
+                s[memory[check]].scaleTo(115,230);
             }
             check = count;
             if(v.keyPressed(' ')){
                 if(picked[count]){
                     picked[count]=false;
-                    k[count].setHidden(true);
+                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),200);
                     select--;
                     v.wait(200);
                 }
                 else if(select<5){
                     picked[count]=true;
-                    k[count].setHidden(false);
+                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),150);
                     select++;
                     v.wait(200);
                 }
@@ -90,7 +87,6 @@ public class Table extends Card
         {
             s[memory[i]].moveTo(20+i*130,200);
             s[memory[i]].setHidden(false);
-            k[i].setHidden(true);
         }
     }
 }
