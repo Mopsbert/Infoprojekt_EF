@@ -4,7 +4,7 @@ import sas.*;
 import java.awt.Color;
 import java.util.Random;
 
-public class Level extends Main
+public class Level extends Main 
 {
     Random random;
     public Level()
