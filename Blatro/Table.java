@@ -54,7 +54,7 @@ public class Table extends Card
                 }
                 else if(select<5){
                     picked[count]=true;
-                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),150);
+                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),175);
                     select++;
                     v.wait(200);
                 }
