@@ -48,13 +48,13 @@ public class Table extends Card
             if(v.keyPressed(' ')){
                 if(picked[count]){
                     picked[count]=false;
-                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),200);
+                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),180);
                     select--;
                     v.wait(200);
                 }
                 else if(select<5){
                     picked[count]=true;
-                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),175);
+                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),150);
                     select++;
                     v.wait(200);
                 }
