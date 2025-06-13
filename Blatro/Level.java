@@ -7,6 +7,7 @@ import java.util.Random;
 public class Level extends Main 
 {
     Random random;
+    int scene;
     public Level()
     {
         random = new Random();
