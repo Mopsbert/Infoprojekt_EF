@@ -40,6 +40,7 @@ public class Card extends Main
         switch(z){
             case 0,13,26,39:
                 t.setText("A");
+                
                 break;
             case 1,14,27,40:
                 t.setText("2");
