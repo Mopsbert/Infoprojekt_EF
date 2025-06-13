@@ -24,8 +24,9 @@ public class Level extends Main
         c = new Circle(x,y,10*multiplier,Color.GREEN);
         r = new Rectangle(x+8*multiplier,y+20*multiplier,4*multiplier,12*multiplier);
     }
+
     public void switchscene(int scene)
     {
-        
+
     }
 }
