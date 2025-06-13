@@ -48,7 +48,7 @@ public class Table extends Card
             if(v.keyPressed(' ')){
                 if(picked[count]){
                     picked[count]=false;
-                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),200);
+                    s[memory[count]].moveTo(s[memory[count]].getShapeX(),180);
                     select--;
                     v.wait(200);
                 }
