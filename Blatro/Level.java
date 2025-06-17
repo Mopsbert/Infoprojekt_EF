@@ -1,5 +1,4 @@
 package Blatro;
-
 import sas.*;
 import java.awt.Color;
 import java.util.Random;
