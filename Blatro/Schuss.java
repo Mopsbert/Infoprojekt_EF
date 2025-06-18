@@ -12,15 +12,19 @@ public class Schuss {
     double winkelInGrad;
     double deltaY;
     double deltaX;
-    double  vy;
+    double speed =5;
     public Schuss(double x, double y, double w) {
         schuss = new Rectangle(x, y, 20, 5);
         schuss.turn(w);
          
     }
 
-    public void bewegen() {
-        schuss.move(5,0);
+    public void bewegen(double w) {
+        double winkelInBogenmass = Math.toRadians(w);
+        double dx = Math.cos(winkelInBogenmass) * speed;
+        double dy = Math.sin(winkelInBogenmass) * speed;
+        
+        schuss.move(dx, dy);
     }
 
     public  void beruehrt(int rx,int ry){

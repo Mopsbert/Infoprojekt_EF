@@ -43,14 +43,19 @@ public class Player extends Level {
                 figur.turnTo(mx, my);
                 figur.turn(-90);
             }
-            if (v.keyPressed(' ')&&ticks%20== 0) {
+            if (v.keyPressed(' ')&&ticks%40== 0) {
                 schuesse.add(new Schuss(c.getCenterX(),c.getCenterY(),winkel ));
 
             }
-            for (Schuss schuss : schuesse) {
-                schuss.bewegen();
+            for (int i = 0; i < schuesse.size(); i++) {
+                Schuss schuss = schuesse.get(i);
+                schuss.bewegen(winkel);
+                if (schuss.getX() < 0 || schuss.getX() > 1200 || schuss.getY() < 0 || schuss.getY() > 900) {
+                    schuss.schuss.setHidden(true);
+                    schuesse.remove(i);
+                    i--;
+                }
 
             }
         }
-    }
-}
+    }}
