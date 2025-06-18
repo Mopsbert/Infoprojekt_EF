@@ -37,8 +37,8 @@ public class Player extends Level {
                 myy = my;
                 deltaX = mx-c.getCenterX();
                 deltaY = my-c.getCenterY();
-                double winkelInBogenmaﬂ = Math.atan2(deltaY, deltaX);
-                winkelInGrad = Math.toDegrees(winkelInBogenmaﬂ);
+                double winkelInBogenmass = Math.atan2(deltaY, deltaX);
+                winkelInGrad = Math.toDegrees(winkelInBogenmass);
                 winkel = winkelInGrad;
                 figur.turnTo(mx, my);
                 figur.turn(-90);

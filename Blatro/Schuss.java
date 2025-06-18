@@ -23,7 +23,7 @@ public class Schuss {
         schuss.move(5,0);
     }
 
-    public  void berührt(int rx,int ry){
+    public  void beruehrt(int rx,int ry){
         rx = x;
         ry = y;
         if (schuss.getCenterX() > rx &&schuss.getCenterY() == ry){
