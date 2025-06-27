@@ -6,6 +6,7 @@ import sas.*;
 
 public class Table extends Card
 {
+    UI u;
     Circle[] k;
     Text b,c;
     Random dealer;
@@ -16,10 +17,11 @@ public class Table extends Card
     {
         b = new Text(400,700,"Discard by pressing Backspace");
         c = new Text(400,600,select+"/5");
-        v.setBackgroundColor(Color.GREEN);
         dealer = new Random();
+        v.setBackgroundColor(Color.GREEN);
         picked = new boolean[9];
         memory = new int [9];
+        u = new UI();
         for(int i = 0; i<9;i++)
         {
             memory[i]=52;
@@ -40,9 +42,9 @@ public class Table extends Card
                 count++;
                 v.wait(200);
             }
-            s[memory[count]].scaleTo(130,260);
+            s[memory[count]].scaleTo(100,260);
             if(count!=check){
-                s[memory[check]].scaleTo(115,230);
+                s[memory[check]].scaleTo(90,230);
             }
             check = count;
             if(v.keyPressed(' ')){
@@ -85,7 +87,7 @@ public class Table extends Card
         }
         for(int i = 0; i<9;i++)
         {
-            s[memory[i]].moveTo(20+i*130,200);
+            s[memory[i]].moveTo(220+i*100,200);
             s[memory[i]].setHidden(false);
         }
     }

@@ -3,7 +3,7 @@ import sas.*;
 import java.awt.Color;
 import sasio.*;
 
-public class UI extends Main
+public class UI
 {
     Text UI_t,TMult,TAdd,TScore,TNeeded;
     Rectangle LeftSide,BgScore,BgMult,BgAdd,BgNeeded;
@@ -40,9 +40,6 @@ public class UI extends Main
     {
         while(true){
             
-            if(v.keyPressed('w')){LSide.scale(1.000001, 1);LSide.move(LSideMove, 0);LSideMove=LSideMove*1.000001;TMult.move(LSideMove, 0);TNeeded.move(LSideMove, 0);}
-            if(v.keyPressed('q')){LSide.setHidden(true);LSideT.setHidden(true);}
-            if(v.keyPressed('e')){LSide.setHidden(false);LSideT.setHidden(false);}
             TMult.setText("Mult:"+Mult);
             TAdd.setText("Base:"+Add);
             TScore.setText("Score:"+Add*Mult);
