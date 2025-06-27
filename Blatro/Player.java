@@ -23,11 +23,12 @@ public class Player extends Level {
         figur.add(c);
         figur.add(e);
         ticks = 0;
+        int scene = 1;
         while (true) {
             v.wait(1);
             ticks ++;
-            if (v.keyPressed('a') && figur.getCenterX() > 50)     figur.move(-speed, 0);
-            if (v.keyPressed('d') && figur.getCenterX() < 1150)   figur.move(speed, 0);
+            if (v.keyPressed('a') && figur.getCenterX() > 10)     figur.move(-speed, 0);
+            if (v.keyPressed('d') && figur.getCenterX() < 1190)   figur.move(speed, 0);
             if (v.keyPressed('w') && figur.getCenterY() > 50)     figur.move(0, -speed);
             if (v.keyPressed('s') && figur.getCenterY() < 850)    figur.move(0, speed);
             if (mouseArea.mouseClicked()) {
@@ -44,7 +45,7 @@ public class Player extends Level {
                 figur.turn(-90);
             }
             if (v.keyPressed(' ')&&ticks%40== 0) {
-                schuesse.add(new Schuss(c.getCenterX(),c.getCenterY(),winkel ));
+                schuesse.add(new Schuss(r.getCenterX()-8,r.getCenterY(),winkel ));
 
             }
             for (int i = 0; i < schuesse.size(); i++) {
@@ -57,5 +58,24 @@ public class Player extends Level {
                 }
 
             }
+            if(figur.getCenterX() >1180){
+                if(scene == 1){
+                  switchscene(2);  
+                  scene = 2;
+                  double temp = figur.getCenterY();
+                figur.moveTo(40,temp);
+                }
+                
+            }
+            if(figur.getCenterX() <20){
+                if(scene == 2){
+                  switchscene(1); 
+                  scene = 1;
+                  double temp = figur.getCenterY();
+                figur.moveTo(1160,temp);
+                }
+                
+            }
         }
-    }}
+    }
+}

@@ -14,7 +14,7 @@ public class Level extends Main
         for( int i = 0; i<100;i++){
             tree(random.nextInt(50,1150),random.nextInt(50,850),random.nextDouble(0.8,1.2));
         }
-    
+        scene = 1;
     }
 
     public void tree(int x, int y, double multiplier)
@@ -25,8 +25,16 @@ public class Level extends Main
         r = new Rectangle(x+8*multiplier,y+20*multiplier,4*multiplier,12*multiplier,new Color (102,51,0));
     }
 
-    public void switchscene(int scene)
-    {
+    public void switchscene(int pscene)
+    { if(pscene == 1){
+            v.setBackgroundColor(new Color (136,215,170));
+            
+            scene = 1;
+        }
+        if(pscene == 2){
+            v.setBackgroundColor(new Color (204,255,255));
+            scene = 2;
+        }
 
     }
 }
