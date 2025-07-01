@@ -59,21 +59,21 @@ public class Player extends Level {
 
             }
             if(figur.getCenterX() >1180){
-                if(scene == 1){
-                  switchscene(2);  
-                  scene = 2;
+               
+                  switchscene(scene+1);  
+                  scene++;
                   double temp = figur.getCenterY();
                 figur.moveTo(60,temp-35);
-                }
+              
                 
             }
             if(figur.getCenterX() <20){
-                if(scene == 2){
-                  switchscene(1); 
-                  scene = 1;
+               
+                  switchscene(scene-1); 
+                  scene--;
                   double temp = figur.getCenterY();
                 figur.moveTo(1140,temp-35);
-                }
+                
                 
             }
         }
