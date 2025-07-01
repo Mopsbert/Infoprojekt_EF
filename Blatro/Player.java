@@ -6,14 +6,15 @@ import java.util.ArrayList;
 public class Player extends Level {
 
     Sprite figur;
-    Rectangle mouseArea;
+    Rectangle mouseArea,object;
     double speed = 0.5;
     ArrayList<Schuss> schuesse;
     int ticks;
     double mxx,myy,deltaX,deltaY,winkelInGrad,winkel;
     public Player() {
 
-        mouseArea = new Rectangle(0, 0, 1200, 900, new Color(0, 0, 0, 0));     
+        mouseArea = new Rectangle(0, 0, 1200, 900, new Color(0, 0, 0, 0));  
+        object = new Rectangle(500, 100,25,25);
         figur = new Sprite();
         schuesse = new ArrayList<>();
         Rectangle r = new Rectangle(495, 500, 10, 50);                
@@ -24,6 +25,9 @@ public class Player extends Level {
         figur.add(e);
         ticks = 0;
         int scene = 1;
+        boolean tot = false;
+        boolean hoch= false;
+        object.setHidden(true);
         while (true) {
             v.wait(1);
             ticks ++;
@@ -59,22 +63,59 @@ public class Player extends Level {
 
             }
             if(figur.getCenterX() >1180){
-               
-                  switchscene(scene+1);  
-                  scene++;
-                  double temp = figur.getCenterY();
+
+                switchscene(scene+1);  
+                scene++;
+                double temp = figur.getCenterY();
                 figur.moveTo(60,temp-35);
-              
-                
+
             }
             if(figur.getCenterX() <20){
-               
-                  switchscene(scene-1); 
-                  scene--;
-                  double temp = figur.getCenterY();
+
+                switchscene(scene-1); 
+                scene--;
+                double temp = figur.getCenterY();
                 figur.moveTo(1140,temp-35);
-                
-                
+
+            }
+            if(scene == 2&& tot == false){
+                object.setHidden(false);
+            }
+            else{
+                object.setHidden(true);
+            }
+            for (int i = 0; i < schuesse.size(); i++) {
+                Schuss schuss = schuesse.get(i);
+
+                if (schuss.schuss.intersects(object)){
+                    schuss.schuss.setHidden(true);
+                    object.setHidden(true);
+                    schuesse.remove(i);
+                    tot = true;
+                    i--;
+                }
+
+            } 
+            if(ticks%50== 0){
+                tot = false; 
+            }
+            if(object.getCenterY() < 500&&hoch == false){
+                object.move(0,1);
+
+            }
+            if(object.getCenterY()==490){
+                hoch = true;
+            }
+            if(object.getCenterY() > 100&&hoch == true){
+
+                 object.move(0,-1);
+
+            }
+            if(object.getCenterY()==99){
+                hoch = false;
+            }
+            if (hoch == true){
+                object.setColor(Color.RED);
             }
         }
     }

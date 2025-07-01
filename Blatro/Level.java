@@ -26,15 +26,18 @@ public class Level extends Main
     }
 
     public void switchscene(int pscene)
-    { if(pscene == 1){
+    {   if(pscene == 1){
             v.setBackgroundColor(new Color (136,215,170));
-            
+
             scene = 1;
         }
         if(pscene == 2){
             v.setBackgroundColor(new Color (204,255,255));
             scene = 2;
         }
-
+          if(pscene == 3){
+            v.setBackgroundColor(new Color (204,229,255));
+            scene = 2;
+        }
     }
 }
