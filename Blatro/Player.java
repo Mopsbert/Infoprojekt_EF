@@ -27,8 +27,8 @@ public class Player extends Level {
         while (true) {
             v.wait(1);
             ticks ++;
-            if (v.keyPressed('a') && figur.getCenterX() > 10)     figur.move(-speed, 0);
-            if (v.keyPressed('d') && figur.getCenterX() < 1190)   figur.move(speed, 0);
+            if (v.keyPressed('a') && c.getCenterX() > 5)     figur.move(-speed, 0);
+            if (v.keyPressed('d') && c.getCenterX() < 1995)   figur.move(speed, 0);
             if (v.keyPressed('w') && figur.getCenterY() > 50)     figur.move(0, -speed);
             if (v.keyPressed('s') && figur.getCenterY() < 850)    figur.move(0, speed);
             if (mouseArea.mouseClicked()) {
@@ -63,7 +63,7 @@ public class Player extends Level {
                   switchscene(2);  
                   scene = 2;
                   double temp = figur.getCenterY();
-                figur.moveTo(40,temp);
+                figur.moveTo(60,temp-35);
                 }
                 
             }
@@ -72,7 +72,7 @@ public class Player extends Level {
                   switchscene(1); 
                   scene = 1;
                   double temp = figur.getCenterY();
-                figur.moveTo(1160,temp);
+                figur.moveTo(1140,temp-35);
                 }
                 
             }
